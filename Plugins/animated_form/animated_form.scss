@@ -1,0 +1,161 @@
+
+
+
+/* --------------------------------------- *\
+  #Animated simple form fields
+\* --------------------------------------- */
+
+.control-label  {
+  position: absolute;
+  text-transform: uppercase;
+  color: $grey;
+  font-size: 14px;
+  padding: 0 14px 0 0;
+  margin-top: 14px;
+  margin-left: 11px;
+  cursor: text;
+  left: 0;
+
+  transform: scale(1);
+  transform-origin: bottom left;
+  transition: transform 0.1s $timing;
+
+  abbr {
+    cursor: text;
+    border-bottom: 0;
+    position: absolute;
+    right: 0;
+    font-size: 1.4em;
+    color: $secondary-colour;
+
+    transition: color 0.1s $timing;
+  }
+
+  &.select {
+    transform: scale(0.7) translateY(-54px);
+    transform-origin: bottom left;
+
+    abbr {
+      color: $grey;
+    }
+  }
+}
+
+textarea.form-control {
+  min-height: 200px;
+}
+
+.form-control {
+  position: relative;
+  height: 50px;
+  font-size: 20px;
+  margin-top: 20px;
+  font-family: $company-font;
+  color: $secondary-colour;
+  border-radius: $br;
+  border: 0;
+  box-shadow: none;
+  background-color: $white;
+
+  &:focus {
+    box-shadow: none;
+  }
+  &.select {
+    background: $white;
+    height: 50px;
+    line-height: 50px;
+
+    option {
+      font-size: 14px;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 1px $primary-colour;
+    }
+  }
+}
+
+
+
+//Autocomplete workaround
+
+input:-webkit-autofill {
+  -webkit-box-shadow:0 0 0 50px white inset;
+  -webkit-text-fill-color: #333;
+}
+
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 50px white inset;
+  -webkit-text-fill-color: #333;
+} 
+
+.form-control:-webkit-autofill {
+  background: none;
+  color: inherit;
+}
+
+
+//Move labels on change ( filled / selected, defaults to this if no-anim )
+.no-anim .control-label,
+.filled .control-label,
+.selected .control-label {
+  transform: scale(0.7) translateY(-54px);
+  transform-origin: bottom left;
+
+  transition: transform 0.1s $timing;
+
+  abbr {
+    color: $grey;
+    transition: color 0.1s $timing;
+  }
+
+  &.select {
+    transform: scale(0.7) translateY(-54px);
+  }
+
+  &.label--white {
+    color: $white;
+    transition: color 0.1s;
+
+    abbr {
+      color: $white;
+      transition: color 0.1s;
+    }
+  }
+}
+
+
+
+//Validations
+.has-error .help-block {
+  color: $charlie-warning;
+  margin: -1px 0 20px 0;
+}
+
+
+.has-error .control-label {
+  color: $white;
+
+  abbr {
+    color: $white;
+  }
+}
+.has-error.no-anim .control-label,
+.has-error.filled .control-label,
+.has-error.selected .control-label {
+  color: $grey;
+
+  abbr {
+    color: $grey;
+  }
+}
+
+.has-error .form-control {
+  color: $white;
+  background: $charlie-warning;
+  box-shadow: none;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
